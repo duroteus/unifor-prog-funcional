@@ -22,6 +22,8 @@ def adicionar_filme():
         if not ano.isdigit():
             raise ValueError("O ano de lançamento deve ser um número.")
         
+        ano = int(ano)
+        
         for filme in filmes:
             if filme['titulo'] == titulo and filme['diretor'] == diretor and filme['ano'] == int(ano):
                 print(f"Erro: O filme '{titulo}' dirigido por '{diretor}' em {ano} já está cadastrado.")
@@ -35,9 +37,10 @@ def adicionar_filme():
         })
         print("Filme adicionado com sucesso!")
         proximo_id += 1
-    
+        
     except ValueError as e:
         print(f"Erro ao adicionar filme: {e}")
+        raise e
 
 
 def mostrar_filmes():
